@@ -7,16 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-    
-    
-    <ul>
-        <li>Welcome to todolist</li>
-        <li>Hit the + button to add new items</li>
-        <li><%= newListItem %></li>
-    </ul>
+    <h1><%=head%></h1>
+
+
+<% newListItem.forEach(function(item){  %>
+<form action="/delete" method="POST">
+<p><input type="checkbox" name="checkbox" value="<%=item._id%>" onchange="this.form.submit()"><%= item.name%></p>
+<input type="hidden" name="hiddenInput" value="<%=head%>">
+</form>
+<%})%>
+
     <form action="/" method="POST">
     <input type="text" name="newItem">
-    <button type="submit">+</button>
+    <button type="submit" name="buttonAdd" value="<%=head%>">+</button>
     </form>
     
 </body>
